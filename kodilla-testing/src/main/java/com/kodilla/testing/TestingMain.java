@@ -4,7 +4,7 @@ import com.kodilla.testing.calculator.Calculator;
 
 public class TestingMain {
     public static void main(String[] args) {
-        Calculator calculator = new Calculator();
+        /*Calculator calculator = new Calculator();
 
         Integer resultAdd = calculator.addFirstNumberToSecondNumber(2, 2);
         Integer resultSubtract = calculator.subtractFirstNumberToSecondNumber(2, 2);
@@ -23,6 +23,6 @@ public class TestingMain {
             System.out.println("test OK");
         } else {
             System.out.println("Error!");
-        }
+        }*/
     }
 }
