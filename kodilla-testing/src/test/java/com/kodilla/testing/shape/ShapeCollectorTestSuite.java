@@ -1,20 +1,22 @@
 package com.kodilla.testing.shape;
 
 import org.junit.*;
+
 import java.util.ArrayList;
 
 public class ShapeCollectorTestSuite {
     private static int testCounter = 0;
+    ShapeCollector shapeCollector = new ShapeCollector();
 
     @Before
     public void before() {
         testCounter++;
-        System.out.println("Test Case #"+ testCounter + ": begin");
+        System.out.println("Test Case #" + testCounter + ": begin");
     }
 
     @After
     public void after() {
-        System.out.println("Test Case #"+ testCounter + ": finished");
+        System.out.println("Test Case #" + testCounter + ": finished");
     }
 
     @BeforeClass
@@ -32,19 +34,18 @@ public class ShapeCollectorTestSuite {
         //Given
         Circle circle = new Circle();
         Triangle triangle = new Triangle();
-        ArrayList<Shape> figureList = new ArrayList<Shape>(){{
+        ArrayList<Shape> expected = new ArrayList<Shape>() {{
             add(circle);
             add(triangle);
         }};
-        ShapeCollector shapeCollector = new ShapeCollector();
         //When
-        ArrayList<Shape> temporary =  new ArrayList<Shape>(){{
-           add(circle);
+        ArrayList<Shape> preparedShapeList = new ArrayList<Shape>() {{
+            add(circle);
         }};
-        ArrayList<Shape> result = shapeCollector.addFigure(triangle, temporary);
-        System.out.println("Testing " + result);
+        ArrayList<Shape> actual = shapeCollector.addFigure(triangle, preparedShapeList);
+        System.out.println("Testing " + actual);
         //Then
-        Assert.assertEquals(figureList, result);
+        Assert.assertEquals(expected, actual);
     }
 
     @Test
@@ -52,21 +53,18 @@ public class ShapeCollectorTestSuite {
         //Given
         Circle circle = new Circle();
         Triangle triangle = new Triangle();
-        ArrayList<Shape> figureList = new ArrayList<Shape>(){{
-            add(circle);
+        ArrayList<Shape> expected = new ArrayList<Shape>() {{
             add(triangle);
-            remove(circle);
         }};
-        ShapeCollector shapeCollector = new ShapeCollector();
         //When
-        ArrayList<Shape> temporary = new ArrayList<Shape>(){{
-           add(circle);
-           add(triangle);
+        ArrayList<Shape> preparedShapeList = new ArrayList<Shape>() {{
+            add(triangle);
+            add(circle);
         }};
-        ArrayList<Shape> result = shapeCollector.removeFigure(circle, temporary);
-        System.out.println("Testing " + result);
+        ArrayList<Shape> actual = shapeCollector.removeFigure(circle, preparedShapeList);
+        System.out.println("Testing " + actual);
         //Then
-        Assert.assertEquals(figureList, result);
+        Assert.assertEquals(expected, actual);
     }
 
     @Test
@@ -74,20 +72,16 @@ public class ShapeCollectorTestSuite {
         //Given
         Circle circle = new Circle();
         Triangle triangle = new Triangle();
-        ArrayList<Shape> figureList = new ArrayList<Shape>(){{
-            add(circle);
-            add(triangle);
-        }};
-        ShapeCollector shapeCollector = new ShapeCollector();
+        Shape expected = triangle;
         //When
-        ArrayList<Shape> temporary = new ArrayList<Shape>(){{
+        ArrayList<Shape> preparedList = new ArrayList<Shape>() {{
             add(circle);
             add(triangle);
         }};
-        Shape result = shapeCollector.getFigure(1, temporary);
-        System.out.println("Testing " + result);
+        Shape actual = shapeCollector.getFigure(1, preparedList);
+        System.out.println("Testing " + actual);
         //Then
-        Assert.assertEquals(figureList.get(1), result);
+        Assert.assertEquals(expected, actual);
     }
 
     @Test
@@ -96,21 +90,20 @@ public class ShapeCollectorTestSuite {
         Circle circle = new Circle();
         Triangle triangle = new Triangle();
         Square square = new Square();
-        ArrayList<Shape> figureList = new ArrayList<Shape>(){{
+        ArrayList<Shape> expected = new ArrayList<Shape>() {{
             add(circle);
             add(triangle);
             add(square);
         }};
-        ShapeCollector shapeCollector = new ShapeCollector();
         //When
-        ArrayList<Shape> temporary = new ArrayList<Shape>(){{
+        ArrayList<Shape> preparedList = new ArrayList<Shape>() {{
             add(circle);
             add(triangle);
             add(square);
         }};
-        ArrayList<Shape> result = shapeCollector.showFigures(temporary);
-        System.out.println("Testing " + result);
+        ArrayList<Shape> actual = shapeCollector.showFigures(preparedList);
+        System.out.println("Testing " + actual);
         //Then
-        Assert.assertEquals(figureList, result);
+        Assert.assertEquals(expected, actual);
     }
 }
