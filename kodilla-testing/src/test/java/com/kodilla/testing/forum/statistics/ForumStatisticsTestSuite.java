@@ -1,7 +1,5 @@
 package com.kodilla.testing.forum.statistics;
 
-import com.kodilla.testing.forum.statistics.ForumStatistics;
-import com.kodilla.testing.forum.statistics.Statistics;
 import org.junit.Assert;
 import org.junit.Test;
 
@@ -16,21 +14,21 @@ public class ForumStatisticsTestSuite {
     public void shouldCalculateAdvStatisticsWithMock() {
         //Given
         Statistics statisticsMock = mock(Statistics.class);
+        //do wywalenia?
         List<String> usersList = new ArrayList<String>();
         usersList.add("John");
         usersList.add("Bob");
         usersList.add("David");
-        int dummyPostsCount = 100;
-        int dummyCommentsCount = 100;
-
+        //
         when(statisticsMock.usersNames()).thenReturn(usersList);
-        when(statisticsMock.postsCount()).thenReturn(dummyPostsCount);
-        when(statisticsMock.commentsCount()).thenReturn(dummyCommentsCount);
+        //when(statisticsMock.usersNames().size()).thenReturn(45);
+        when(statisticsMock.postsCount()).thenReturn(52);
+        when(statisticsMock.commentsCount()).thenReturn(89);
 
-        ForumStatistics forumStatistics = new ForumStatistics(statisticsMock);
+        ForumStatistics preparedStatistics = new ForumStatistics(statisticsMock);
 
         //When
-        int quantityOfUsers = forumStatistics.countUsersNumber(usersList);
+        int quantityOfUsers = preparedStatistics.countUsersNumber(usersList);
 
         //Then
         Assert.assertEquals(3, quantityOfUsers);

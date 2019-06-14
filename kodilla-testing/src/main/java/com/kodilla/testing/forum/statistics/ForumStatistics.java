@@ -6,11 +6,15 @@ import java.util.Iterator;
 
 public class ForumStatistics {
     Statistics statistics;
-    List<String> userNames = new ArrayList<>();
+    private List<String> userNames = new ArrayList<>();
+    private Integer postCounter;
+    private Integer commentCounter;
 
-    public ForumStatistics(Statistics statistics) {
+    public ForumStatistics(Statistics statistics, List<String> userNames, Integer postCounter, Integer commentCounter) {
         this.statistics = statistics;
         this.userNames = userNames;
+        this.postCounter = postCounter;
+        this.commentCounter = commentCounter;
     }
 
     public Integer countUsersNumber(List<String> usersNames){
@@ -25,28 +29,19 @@ public class ForumStatistics {
         return statistics.commentsCount();
     }
 
-    public Integer averagePostNumberPerUser(Statistics statistics){
-        Iterator<String> userNamesIterator = userNames.iterator();
+    public Double averagePostNumberPerUser(Integer postCounter){
 
-        while (userNamesIterator.hasNext()) {
-        //    return statistics.postsCount()/userNames.size();
-        }
-        return 2;
+        return (double)postCounter/countUsersNumber(userNames);
     }
 
-    public Integer averageCommentNumberPerUser(){
-        Iterator<String> userNamesIterator = userNames.iterator();
+    public Double averageCommentNumberPerUser(Integer commentCounter){
 
-        while (userNamesIterator.hasNext()) {
-        //    return statistics.commentsCount()/userNames.size();
-        }
-        return 2;
+        return (double)commentCounter/countUsersNumber(userNames);
     }
 
-    public Integer averageCommentNumberPerPost(){
+    public Double averageCommentNumberPerPost(Integer postCounter, Integer commentCounter){
 
-        //return statistics.postsCount()/statistics.commentsCount();
-        return 2;
+        return (double)commentCounter/postCounter;
     }
 
     public Statistics calculateAdvStatistics(Statistics statistics){
