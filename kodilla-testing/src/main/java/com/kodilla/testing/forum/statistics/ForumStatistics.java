@@ -1,53 +1,73 @@
 package com.kodilla.testing.forum.statistics;
 
 import java.util.ArrayList;
-import java.util.List;
-import java.util.Iterator;
 
 public class ForumStatistics {
     Statistics statistics;
-    private List<String> userNames = new ArrayList<>();
-    private Integer postCounter;
-    private Integer commentCounter;
+    private Double usersNumber;
+    private Double postsNumber;
+    private Double commentsNumber;
+    private Double postNumberPerUser;
+    private Double commentNumberPerUser;
+    private Double commentNumberPerPost;
+    private ArrayList<Integer> advStatistics;
 
-    public ForumStatistics(Statistics statistics, List<String> userNames, Integer postCounter, Integer commentCounter) {
+    public ForumStatistics(Statistics statistics) {
         this.statistics = statistics;
-        this.userNames = userNames;
-        this.postCounter = postCounter;
-        this.commentCounter = commentCounter;
+        this.usersNumber = usersNumber;
+        this.postsNumber = postsNumber;
+        this.commentsNumber = commentsNumber;
+        this.postNumberPerUser = postNumberPerUser;
+        this.commentNumberPerUser = commentNumberPerUser;
+        this.commentNumberPerPost = commentNumberPerPost;
+        this.advStatistics = advStatistics;
     }
 
-    public Integer countUsersNumber(List<String> usersNames){
-        return usersNames.size();
+    public Double countUsersNumber() {
+        return (double) statistics.usersNames().size();
     }
 
-    public Integer countPostsNumber(){
-        return statistics.postsCount();
+    public Double countPostsNumber() {
+        return (double) statistics.postsCount();
     }
 
-    public Integer countCommentsNumber(){
-        return statistics.commentsCount();
+    public Double countCommentsNumber() {
+        return (double) statistics.commentsCount();
     }
 
-    public Double averagePostNumberPerUser(Integer postCounter){
-
-        return (double)postCounter/countUsersNumber(userNames);
+    public Double averagePostNumberPerUser() {
+        Double x = (double) countPostsNumber() / countUsersNumber();
+        if (Double.isNaN(x)) {
+            x = 0.0;
+        }
+        return x;
     }
 
-    public Double averageCommentNumberPerUser(Integer commentCounter){
-
-        return (double)commentCounter/countUsersNumber(userNames);
+    public Double averageCommentNumberPerUser() {
+        Double x = (double) countCommentsNumber() / countUsersNumber();
+        if (Double.isNaN(x)) {
+            x = 0.0;
+        }
+        return x;
     }
 
-    public Double averageCommentNumberPerPost(Integer postCounter, Integer commentCounter){
-
-        return (double)commentCounter/postCounter;
+    public Double averageCommentNumberPerPost() {
+        Double x = (double) countCommentsNumber() / countPostsNumber();
+        if (Double.isNaN(x)) {
+            x = 0.0;
+        }
+        return x;
     }
 
-    public Statistics calculateAdvStatistics(Statistics statistics){
-        Integer usersNumber = countUsersNumber(statistics.usersNames());
-        Integer postsNumber = countPostsNumber();
+    public ArrayList<Double> calculateAdvStatistics() {
 
-        return statistics;
+        ArrayList<Double> advStatistics = new ArrayList<Double>();
+        advStatistics.add(usersNumber = countUsersNumber());
+        advStatistics.add(postsNumber = countPostsNumber());
+        advStatistics.add(commentsNumber = countCommentsNumber());
+        advStatistics.add(commentNumberPerUser = averageCommentNumberPerUser());
+        advStatistics.add(postNumberPerUser = averagePostNumberPerUser());
+        advStatistics.add(commentNumberPerPost = averageCommentNumberPerPost());
+        return advStatistics;
     }
 }

@@ -16,16 +16,17 @@ import java.util.Map;
 public class StreamMainAll {
 
     public static void main(String[] args) {
-        /*
+
         //beautifier
         PoemBeautifier poemBeautifier = new PoemBeautifier();
 
         System.out.println("Making something interesting with the text....");
         poemBeautifier.beautify("Słowa", String::toUpperCase);
         poemBeautifier.beautify("Słowa", String::toLowerCase);
-        //poemBeautifier.beautify("Słowa", PoemDecorator::replaceCharacter);
-        //poemBeautifier.beautify("Słowa", PoemBeautifier::multiplyText);
+        poemBeautifier.multiplyText("Słowa",PoemBeautifier::multiplyText)
+        //:: nie może mieć parametru, czylil trzeba lambdę zastosować
 
+        /*
         //iterate
         System.out.println("Using Stream to generate even numbers from 1 to 20");
         NumbersGenerator.generateEven(20);
@@ -41,7 +42,7 @@ public class StreamMainAll {
                 .map(s -> s.substring(0, s.indexOf(' ') + 2) + ".")
                 .filter(s -> s.substring(0, 1).equals("M"))
                 .forEach(System.out::println);
-        */
+
 
         //book
         BookDirectory theBookDirectory = new BookDirectory();
@@ -67,5 +68,7 @@ public class StreamMainAll {
         theResultMapOfUsers.entrySet().stream()
                 .map(entry -> entry.getKey() + ": " + entry.getValue())
                 .forEach(System.out::println);
+
+         */
     }
 }
