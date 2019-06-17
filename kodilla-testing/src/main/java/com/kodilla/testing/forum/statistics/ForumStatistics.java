@@ -1,7 +1,5 @@
 package com.kodilla.testing.forum.statistics;
 
-import java.util.ArrayList;
-
 public class ForumStatistics {
     Statistics statistics;
     private Double usersNumber;
@@ -10,7 +8,6 @@ public class ForumStatistics {
     private Double postNumberPerUser;
     private Double commentNumberPerUser;
     private Double commentNumberPerPost;
-    private ArrayList<Integer> advStatistics;
 
     public ForumStatistics(Statistics statistics) {
         this.statistics = statistics;
@@ -20,7 +17,30 @@ public class ForumStatistics {
         this.postNumberPerUser = postNumberPerUser;
         this.commentNumberPerUser = commentNumberPerUser;
         this.commentNumberPerPost = commentNumberPerPost;
-        this.advStatistics = advStatistics;
+    }
+
+    public Double getUsersNumber() {
+        return usersNumber;
+    }
+
+    public Double getPostsNumber() {
+        return postsNumber;
+    }
+
+    public Double getCommentsNumber() {
+        return commentsNumber;
+    }
+
+    public Double getPostNumberPerUser() {
+        return postNumberPerUser;
+    }
+
+    public Double getCommentNumberPerUser() {
+        return commentNumberPerUser;
+    }
+
+    public Double getCommentNumberPerPost() {
+        return commentNumberPerPost;
     }
 
     public Double countUsersNumber() {
@@ -59,15 +79,22 @@ public class ForumStatistics {
         return x;
     }
 
-    public ArrayList<Double> calculateAdvStatistics() {
+    public String calculateAdvStatistics() {
 
-        ArrayList<Double> advStatistics = new ArrayList<Double>();
-        advStatistics.add(usersNumber = countUsersNumber());
-        advStatistics.add(postsNumber = countPostsNumber());
-        advStatistics.add(commentsNumber = countCommentsNumber());
-        advStatistics.add(commentNumberPerUser = averageCommentNumberPerUser());
-        advStatistics.add(postNumberPerUser = averagePostNumberPerUser());
-        advStatistics.add(commentNumberPerPost = averageCommentNumberPerPost());
-        return advStatistics;
+        usersNumber = countUsersNumber();
+        postsNumber = countPostsNumber();
+        commentsNumber = countCommentsNumber();
+        commentNumberPerUser = averageCommentNumberPerUser();
+        postNumberPerUser = averagePostNumberPerUser();
+        commentNumberPerPost = averageCommentNumberPerPost();
+
+        return "ForumStatistics{" +
+                "usersNumber=" + usersNumber +
+                ", postsNumber=" + postsNumber +
+                ", commentsNumber=" + commentsNumber +
+                ", postNumberPerUser=" + postNumberPerUser +
+                ", commentNumberPerUser=" + commentNumberPerUser +
+                ", commentNumberPerPost=" + commentNumberPerPost +
+                '}';
     }
 }

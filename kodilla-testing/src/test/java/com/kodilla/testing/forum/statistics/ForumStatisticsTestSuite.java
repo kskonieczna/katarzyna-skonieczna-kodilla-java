@@ -44,13 +44,18 @@ public class ForumStatisticsTestSuite {
         when(statisticsMock.usersNames()).thenReturn(usersNames);
         when(statisticsMock.postsCount()).thenReturn(1000);
         when(statisticsMock.commentsCount()).thenReturn(50);
-        ArrayList<Double> expected = new ArrayList<Double>(
-                Arrays.asList(100.0, 1000.0, 50.0, 0.5, 10.0, 0.05));
-
+        String expected = "ForumStatistics{" +
+                "usersNumber=" + 100.0 +
+                ", postsNumber=" + 1000.0 +
+                ", commentsNumber=" + 50.0 +
+                ", postNumberPerUser=" + 10.0 +
+                ", commentNumberPerUser=" + 0.5 +
+                ", commentNumberPerPost=" + 0.05 +
+                '}';
         ForumStatistics preparedStatistics = new ForumStatistics(statisticsMock);
 
         //When
-        ArrayList<Double> actual = preparedStatistics.calculateAdvStatistics();
+        String actual = preparedStatistics.calculateAdvStatistics();
         System.out.println("Testing " + actual);
         // Then
         Assert.assertEquals(expected, actual);
@@ -64,13 +69,18 @@ public class ForumStatisticsTestSuite {
         when(statisticsMock.usersNames()).thenReturn(usersNames);
         when(statisticsMock.postsCount()).thenReturn(0);
         when(statisticsMock.commentsCount()).thenReturn(0);
-        ArrayList<Double> expected = new ArrayList<Double>(
-                Arrays.asList(0.0, 0.0, 0.0, 0.0, 0.0, 0.0));
-
+        String expected = "ForumStatistics{" +
+                "usersNumber=" + 0.0 +
+                ", postsNumber=" + 0.0 +
+                ", commentsNumber=" + 0.0 +
+                ", postNumberPerUser=" + 0.0 +
+                ", commentNumberPerUser=" + 0.0 +
+                ", commentNumberPerPost=" + 0.0 +
+                '}';
         ForumStatistics preparedStatistics = new ForumStatistics(statisticsMock);
 
         //When
-        ArrayList<Double> actual = preparedStatistics.calculateAdvStatistics();
+        String actual = preparedStatistics.calculateAdvStatistics();
         System.out.println("Testing " + actual);
         // Then
         Assert.assertEquals(expected, actual);
