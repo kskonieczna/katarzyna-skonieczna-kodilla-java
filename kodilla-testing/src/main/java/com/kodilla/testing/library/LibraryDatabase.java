@@ -1,5 +1,6 @@
-package library;
+package com.kodilla.testing.library;
 
+import com.kodilla.testing.library.Book;
 import com.kodilla.testing.library.LibraryUser;
 
 import java.util.List;

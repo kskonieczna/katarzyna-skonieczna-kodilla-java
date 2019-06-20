@@ -1,6 +1,4 @@
-package library;
-
-import java.util.Objects;
+package com.kodilla.testing.library;
 
 public class Book {
     String title;

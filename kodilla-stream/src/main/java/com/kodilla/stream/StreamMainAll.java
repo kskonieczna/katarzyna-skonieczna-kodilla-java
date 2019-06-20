@@ -23,7 +23,7 @@ public class StreamMainAll {
         System.out.println("Making something interesting with the text....");
         poemBeautifier.beautify("Słowa", String::toUpperCase);
         poemBeautifier.beautify("Słowa", String::toLowerCase);
-        poemBeautifier.multiplyText("Słowa",PoemBeautifier::multiplyText)
+        //multiplyText("Słowa", textToBeDecorated -> textToBeDecorated + textToBeDecorated + textToBeDecorated );
         //:: nie może mieć parametru, czylil trzeba lambdę zastosować
 
         /*

@@ -8,6 +8,7 @@ public final class ForumUser {
     private final String username;
     private final String realName;
     private final String location;
+    //zbiór przyjaciół:
     private final Set<ForumUser> friends = new HashSet<>();
 
     public ForumUser(final String username, final String realName,
@@ -17,6 +18,7 @@ public final class ForumUser {
         this.location = location;
     }
 
+    //dodawanie do zbioru przyjaciół:
     public void addFriend(ForumUser user) {
         friends.add(user);
     }
@@ -41,6 +43,36 @@ public final class ForumUser {
         return friends;
     }
 
+    //zwraca zbiór lokalizacji przyjaciół:
+    //friend -> friend.getLocation(), czyli dokonuje zmiany obiektów w strumieniu
+    // z ForumUser na obiekty typu String. W ostatnim kroku działania tworzona jest
+    // kolekcja wynikowa typu Set przy użyciu kolektora strumienia - Collectors.toSet().
+    public Set<String> getLocationsOfFriends() {
+        return friends.stream()
+                .map(friend -> friend.getLocation())
+                .collect(Collectors.toSet());
+    }
+
+    //uruchamiany strumień na kolekcji friends.
+    //
+    public Set<String> getLocationsOfFriendsOfFriends() {
+        //uruchamiany strumień na kolekcji friends:
+        return friends.stream()
+                // dokonujemy spłaszczenia strumienia - dla każdego przyjaciela (user)
+                // pobieramy jego listę przyjaciół (user.getFriends()) i ją przekazujemy
+                // do dalszego przetwarzania w postaci nowego strumienia Stream.
+                // Od tego momentu pracujemy nie na liście przyjaciół, lecz na liście "przyjaciół przyjaciół".
+                .flatMap(user -> user.getFriends().stream())
+                //wykluczamy ze zbioru wynikowego odwołania do "samego siebie"
+                .filter(user -> user != this)
+                //zamiast obiektów ForumUser, dalej będą już przez niego przepływały jedynie obiekty String
+                // będące lokalizacjami użytkowników (pobieramy je przy pomocy metody ForumUser::getLocation).
+                .map(ForumUser::getLocation)
+                //złożenie strumienia wynikowego w kolekcję typu Set zawierającą listę lokalizacji
+                // "przyjaciół przyjaciół"
+                .collect(Collectors.toSet());
+    }
+
     @Override
     public String toString() {
         return "ForumUser{" +
@@ -61,19 +93,5 @@ public final class ForumUser {
     @Override
     public int hashCode() {
         return username.hashCode();
-    }
-
-    public Set<String> getLocationsOfFriends() {
-        return friends.stream()
-                .map(friend -> friend.getLocation())
-                .collect(Collectors.toSet());
-    }
-
-    public Set<String> getLocationsOfFriendsOfFriends() {
-        return friends.stream()
-                .flatMap(user -> user.getFriends().stream())
-                .filter(user -> user != this)
-                .map(ForumUser::getLocation)
-                .collect(Collectors.toSet());
     }
 }
