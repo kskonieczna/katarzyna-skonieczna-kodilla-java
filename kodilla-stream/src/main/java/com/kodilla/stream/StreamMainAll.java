@@ -1,5 +1,7 @@
 package com.kodilla.stream;
 
+import com.kodilla.stream.beautifier.FirstMotive;
+import com.kodilla.stream.beautifier.FirstMotive;
 import com.kodilla.stream.beautifier.PoemBeautifier;
 import com.kodilla.stream.book.BookDirectory;
 import com.kodilla.stream.forumuser.Forum;
@@ -19,12 +21,14 @@ public class StreamMainAll {
 
         //beautifier
         PoemBeautifier poemBeautifier = new PoemBeautifier();
+        //Motive motive = new Motive();
 
         System.out.println("Making something interesting with the text....");
         poemBeautifier.beautify("Słowa", String::toUpperCase);
         poemBeautifier.beautify("Słowa", String::toLowerCase);
-        //multiplyText("Słowa", textToBeDecorated -> textToBeDecorated + textToBeDecorated + textToBeDecorated );
-        //:: nie może mieć parametru, czylil trzeba lambdę zastosować
+        poemBeautifier.addMotive("Słowa", (textToBeDecorated) -> "~~~" + textToBeDecorated + "~~~" );
+        poemBeautifier.addSecondMotive("Słowa", (textToBeDecorated) -> "-->" + textToBeDecorated + "<--" );
+
 
         /*
         //iterate

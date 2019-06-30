@@ -12,7 +12,7 @@ public class Country {
     }
 
     public static BigDecimal getPeopleQuantity(String countryName) {
-        BigDecimal peopleQuantity = new BigDecimal("1290845387943568");
+        BigDecimal peopleQuantity = new BigDecimal("100000000000");
         return peopleQuantity;
     }
 }

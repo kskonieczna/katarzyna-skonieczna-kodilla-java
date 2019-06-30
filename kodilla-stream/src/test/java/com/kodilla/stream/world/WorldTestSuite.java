@@ -1,12 +1,15 @@
 package com.kodilla.stream.world;
 
+import com.kodilla.stream.forum.ForumUser;
 import org.junit.*;
 
 import java.math.BigDecimal;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
-public class WorldTestSuite {
+/*public class WorldTestSuite {
     private static int testCounter = 0;
 
     public void before() {
@@ -32,8 +35,27 @@ public class WorldTestSuite {
     @Test
     public void shouldReturnTotalNumberOfPeopleForGivenContinents() {
         //Given
-        List<Continent> continents = new ArrayList<>();
-        //continents.add(new Country());
+        Set<Country> continents = new HashSet<>();
+        Continent europe = new Continent("Europe");
+        Continent northAmerica = new Continent("North America");
+
+        List<Country> countries = new ArrayList<>();
+        Country poland = new Country("Poland");
+        Country germany = new Country("Germany");
+        Country france = new Country("France");
+        Country canada = new Country("Canada");
+        Country usa = new Country("USA");
+
+        europe.addCountry(poland);
+        europe.addCountry(germany);
+        europe.addCountry(france);
+        northAmerica.addCountry(canada);
+        northAmerica.addCountry(usa);
+
+        Set<Continent> world = new HashSet<>();
+        World worldPrepared = new World();
+        world.add(europe);
+        world.add(northAmerica);
 
         //When
         BigDecimal actual = continents.stream()
@@ -46,4 +68,4 @@ public class WorldTestSuite {
         BigDecimal expected = new BigDecimal("211111110903703703670");
         Assert.assertEquals(expected, actual);
     }
-}
+}*/

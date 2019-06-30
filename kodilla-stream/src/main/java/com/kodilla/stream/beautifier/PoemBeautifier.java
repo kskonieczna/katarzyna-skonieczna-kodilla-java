@@ -2,8 +2,24 @@ package com.kodilla.stream.beautifier;
 
 public class PoemBeautifier {
 
-    public void beautify(String textToBeDecorated, PoemDecorator poemDecorator){
+    public String beautify(String textToBeDecorated, PoemDecorator poemDecorator) {
 
-        System.out.println(poemDecorator.decorate(textToBeDecorated));
+        return poemDecorator.decorate(textToBeDecorated);
     }
+
+    public String addMotive(String textToBeDecorated, FirstMotive firstMotive) {
+
+        return firstMotive.addFirstMotive(textToBeDecorated);
+    }
+
+    public String addSecondMotive(String textToBeDecorated, FirstMotive firstMotive) {
+
+        return firstMotive.addFirstMotive(textToBeDecorated);
+    }
+
+    //public Motive addSecondMotives(String textToBeDecorated) {
+
+    //    Motive textWithSecondMotive = (string) -> "-->" + textToBeDecorated + "<--";
+     //   return textWithSecondMotive;
+    //}
 }
