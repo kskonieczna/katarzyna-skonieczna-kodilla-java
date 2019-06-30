@@ -4,6 +4,7 @@ import org.junit.*;
 
 public class BeautifierTestSuite {
     private static int testCounter = 0;
+    PoemBeautifier beautifier = new PoemBeautifier();
 
     public void before() {
         testCounter++;
@@ -28,7 +29,6 @@ public class BeautifierTestSuite {
     @Test
     public void should_decorate_a_text_with_first_given_motive() {
         //Given
-        PoemBeautifier beautifier = new PoemBeautifier();
         String expected = "~~~Słowa~~~";
         //When
         String actual = beautifier.addMotive("Słowa", (textToBeDecorated) -> "~~~" + textToBeDecorated + "~~~");
@@ -40,7 +40,6 @@ public class BeautifierTestSuite {
     @Test
     public void should_decorate_a_text_with_second_given_motive() {
         //Given
-        PoemBeautifier beautifier = new PoemBeautifier();
         String expected = "-->Słowa<--";
         //When
         String actual = beautifier.addMotive("Słowa", (textToBeDecorated) -> "-->" + textToBeDecorated + "<--");
@@ -52,7 +51,6 @@ public class BeautifierTestSuite {
     @Test
     public void should_transform_a_text_to_upper_case() {
         //Given
-        PoemBeautifier beautifier = new PoemBeautifier();
         String expected = "SŁOWO";
         //When
         String actual = beautifier.beautify("Słowo", String::toUpperCase);
@@ -64,7 +62,6 @@ public class BeautifierTestSuite {
     @Test
     public void should_transform_a_text_to_lower_case() {
         //Given
-        PoemBeautifier beautifier = new PoemBeautifier();
         String expected = "słowo";
         //When
         String actual = beautifier.beautify("Słowo", String::toLowerCase);
