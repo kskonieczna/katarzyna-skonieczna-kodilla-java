@@ -1,5 +1,6 @@
 package com.kodilla.stream;
 
+import com.kodilla.stream.array.ArrayOperations;
 import com.kodilla.stream.forumuser.Forum;
 import com.kodilla.stream.forumuser.ForumUser;
 
@@ -10,6 +11,14 @@ import java.util.stream.Collectors;
 public class StreamMain {
 
     public static void main(String[] args) {
+        int[] numbers = {1,2,3,4,5,6,7,8,9,10};
+
+       System.out.println(ArrayOperations.getAverage(numbers));
+
+    }
+}
+
+    /*public static void main(String[] args) {
 
         Forum theForum = new Forum();
         Map<Integer, ForumUser> theResultMapOfUsers = theForum.getList().stream()
@@ -23,4 +32,4 @@ public class StreamMain {
                 .map(entry -> entry.getKey() + ": " + entry.getValue())
                 .forEach(System.out::println);
     }
-}
+}*/

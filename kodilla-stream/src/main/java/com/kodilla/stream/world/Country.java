@@ -1,17 +1,20 @@
 package com.kodilla.stream.world;
 
 import java.math.BigDecimal;
-import java.util.Set;
-import java.util.stream.Collectors;
 
-public class Country {
+public final class Country implements PeopleQuantity {
     private final String countryName;
 
-    public Country(String countryName) {
+    public Country(final String countryName) {
         this.countryName = countryName;
     }
 
-    public static BigDecimal getPeopleQuantity(String countryName) {
+    public String getCountryName() {
+        return countryName;
+    }
+
+    @Override
+    public BigDecimal getPeopleQuantity() {
         BigDecimal peopleQuantity = new BigDecimal("100000000000");
         return peopleQuantity;
     }
