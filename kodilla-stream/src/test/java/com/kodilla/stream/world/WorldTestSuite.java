@@ -56,14 +56,14 @@ public class WorldTestSuite {
         Set<Continent> preparedData = createWorld();
 
         //When
-        //BigDecimal actual = preparedData.stream()
-                //.flatMap(c->c.getCountries().stream())
-                //.map(World::getPeopleQuantityOfCountries)
-                //.reduce(BigDecimal.ZERO, (sum, current) -> sum = sum.add(current));
-        //System.out.println("Testing " + actual);
+        BigDecimal actual = preparedData.stream()
+                .flatMap(c -> c.getCountries().stream())
+                .map(w -> w.getPeopleQuantity())
+                .reduce(BigDecimal.ZERO, (sum, current) -> sum = sum.add(current));
+        System.out.println("Testing " + actual);
 
         //Then
-        BigDecimal expected = new BigDecimal("2111111100");
-        //Assert.assertEquals(expected, actual);
+        BigDecimal expected = new BigDecimal("500000000000");
+        Assert.assertEquals(expected, actual);
     }
 }
