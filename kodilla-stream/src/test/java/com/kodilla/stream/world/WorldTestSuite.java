@@ -3,13 +3,32 @@ package com.kodilla.stream.world;
 import org.junit.*;
 
 import java.math.BigDecimal;
-import java.util.ConcurrentModificationException;
-import java.util.HashSet;
 import java.util.Set;
-import java.util.stream.Collectors;
 
 public class WorldTestSuite {
     private static int testCounter = 0;
+
+    public Set<Continent> createWorld() {
+        //countries
+        Country poland = new Country("Poland");
+        Country germany = new Country("Germany");
+        Country france = new Country("France");
+        Country canada = new Country("Canada");
+        Country usa = new Country("USA");
+        //continents
+        Continent europe = new Continent("Europe");
+        Continent northAmerica = new Continent("North America");
+        europe.addCountry(poland);
+        europe.addCountry(germany);
+        europe.addCountry(france);
+        northAmerica.addCountry(canada);
+        northAmerica.addCountry(usa);
+        //world
+        World world = new World();
+        world.addContinent(europe);
+        world.addContinent(northAmerica);
+        return world.getWorld();
+    }
 
     public void before() {
         testCounter++;
@@ -34,31 +53,14 @@ public class WorldTestSuite {
     @Test
     public void shouldReturnTotalNumberOfPeopleForGivenContinents() {
         //Given
-        Set<PeopleQuantity> countries = new HashSet<>();
-        Country poland = new Country("Poland");
-        Country germany = new Country("Germany");
-        Country france = new Country("France");
-        Country canada = new Country("Canada");
-        Country usa = new Country("USA");
-
-        Set<Continent> continents = new HashSet<>();
-        Continent europe = new Continent("Europe");
-        Continent northAmerica = new Continent("North America");
-        europe.addCountry(poland);
-        europe.addCountry(germany);
-        europe.addCountry(france);
-        northAmerica.addCountry(canada);
-        northAmerica.addCountry(usa);
-
-        Set<Continent> world = new HashSet<>();
-        //world.add(new Continent("Europe"));
-        //world.add(new Continent("North America"));
+        Set<Continent> preparedData = createWorld();
 
         //When
-        //BigDecimal actual = (BigDecimal) world.stream()
-            //.map(World::getPeopleQuantityOfCountries)
-            //.reduce(BigDecimal.ZERO, (sum, current) -> sum = sum.add(current));
-            //System.out.println("Testing " + actual);
+        //BigDecimal actual = preparedData.stream()
+                //.flatMap(c->c.getCountries().stream())
+                //.map(World::getPeopleQuantityOfCountries)
+                //.reduce(BigDecimal.ZERO, (sum, current) -> sum = sum.add(current));
+        //System.out.println("Testing " + actual);
 
         //Then
         BigDecimal expected = new BigDecimal("2111111100");

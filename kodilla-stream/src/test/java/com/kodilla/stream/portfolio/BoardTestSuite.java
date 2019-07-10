@@ -3,12 +3,11 @@ package com.kodilla.stream.portfolio;
 import org.junit.*;
 
 import java.time.LocalDate;
+import java.time.temporal.ChronoUnit;
 import java.util.ArrayList;
 import java.util.List;
-import java.time.temporal.ChronoUnit;
 import java.util.OptionalDouble;
 
-import static java.util.concurrent.TimeUnit.DAYS;
 import static java.util.stream.Collectors.toList;
 
 public class BoardTestSuite {
@@ -163,25 +162,22 @@ public class BoardTestSuite {
     }
 
     @Test
-    public void testAddTaskListAverageWorkingOnTask(){
-        /*Utwórz wymagane zmienne pomocnicze, a następnie uruchom strumień na kolekcji getTaskLists klasy Board
-Napisz sekwencję funkcji obliczającą średni czas wykonywania zadania z listy “In Progress”
-Napisz asercje sprawdzające otrzymany wynik*/
+    public void testAddTaskListAverageWorkingOnTask() {
 
         //Given
         Board project = prepareTestData();
 
         //When
-        List<TaskList> actual = new ArrayList<>();
-        actual.add(new TaskList("In progress"));
-        OptionalDouble calculatedAverageOfWorkingOnTask = project.getTaskLists().stream()
-                .filter(actual::contains)
+        List<TaskList> inProgressTask = new ArrayList<>();
+        inProgressTask.add(new TaskList("In progress"));
+        double actual = project.getTaskLists().stream()
+                .filter(inProgressTask::contains)
                 .flatMap(tl -> tl.getTasks().stream())
-                .mapToDouble(t -> ChronoUnit.DAYS.between(t.getDeadline(),t.getCreated()))
-                .average();
+                .mapToDouble(t -> ChronoUnit.DAYS.between(t.getCreated(), t.getDeadline()))
+                .average().getAsDouble();
         System.out.println("Testing " + actual);
 
         //Then
-        Assert.assertEquals(2, actual);
+        Assert.assertEquals(18.33, actual, 0.01);
     }
 }

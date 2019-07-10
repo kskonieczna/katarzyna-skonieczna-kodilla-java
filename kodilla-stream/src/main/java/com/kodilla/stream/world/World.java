@@ -21,7 +21,7 @@ public final class World {
         return (BigDecimal) world.stream()
                 .flatMap(continent -> continent.getCountries().stream())
                 .map(PeopleQuantity::getPeopleQuantity)
-                .collect(Collectors.toList());
+                .collect(Collectors.toSet());
     }
 
     @Override
