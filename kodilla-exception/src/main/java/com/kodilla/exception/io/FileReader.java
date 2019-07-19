@@ -14,7 +14,7 @@ public class FileReader {
         ClassLoader classLoader = getClass().getClassLoader();
         //wywołanie metody która pokazuje gdzie ClassLoader ma szukać pliku
         File file;
-        file = new File(classLoader.getResource("file/names.txt").getFile());
+        file = new File(classLoader.getResource("file/naes.txt").getFile());
         //klasa Path pozwala na modyfikację ścieżki o typie string na obiekt Path
         //Path path = Paths.get(file.getPath());
         //stream obiektów reprezentujących linie w pliku tekstowym

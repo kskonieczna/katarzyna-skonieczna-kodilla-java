@@ -4,13 +4,13 @@ import java.util.HashMap;
 
 public class FlightFinder {
 
-    public void findFlight(Flight flight) throws RouteNotFoundException {
-        HashMap<String, Boolean> airportAvailabilityList = new HashMap<String, Boolean>();
 
-        if(flight != null) {
-            System.out.println("Status update: airport .................");
-        } else {
-            throw new RouteNotFoundException("Given airport does not exist");
-        }
+    public boolean findFlight(Flight flight) {
+
+        HashMap<String, Boolean> airportAvailability = new HashMap<>();
+            airportAvailability.put("Warsaw",true);
+            airportAvailability.put("Paris",false);
+
+        return airportAvailability.containsKey(flight.getArrivalAirport());
     }
 }

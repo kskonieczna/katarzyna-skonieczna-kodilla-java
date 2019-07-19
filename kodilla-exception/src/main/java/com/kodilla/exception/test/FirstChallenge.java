@@ -4,24 +4,12 @@ public class FirstChallenge {
 
     public double divide(double a, double b) {
 
-        try {
-
-            return a / b;
-
-        } catch (ArithmeticException e) {
-
-            divide(a,0);
-            System.out.println("you cannot divide by zero!" + e);
-
-        } finally {
-
-            System.out.println("I'm going to be here..always!");
+        if(b == 0){
+            throw new ArithmeticException();
         }
 
         return a / b;
-
     }
-
 
     /**
      * This main can throw an ArithmeticException!!!
@@ -32,9 +20,18 @@ public class FirstChallenge {
 
         FirstChallenge firstChallenge = new FirstChallenge();
 
-        double result = firstChallenge.divide(3, 0);
+        try {
 
-        System.out.println(result);
+            System.out.println(firstChallenge.divide(3, 0));
 
+        } catch (ArithmeticException e) {
+
+            System.out.println("you cannot divide by zero! the result is: " + e.getCause());
+
+        } finally {
+
+            System.out.println("I'm going to be here..always!");
+
+        }
     }
 }
