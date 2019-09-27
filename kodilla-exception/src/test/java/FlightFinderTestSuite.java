@@ -1,5 +1,6 @@
 import com.kodilla.exception.test.Flight;
 import com.kodilla.exception.test.FlightFinder;
+import com.kodilla.exception.test.RouteNotFoundException;
 import org.junit.*;
 
 import java.util.HashMap;
@@ -8,7 +9,7 @@ import java.util.Map;
 public class FlightFinderTestSuite {
     private static int testCounter = 0;
 
-    public Map<String, Boolean> createListOfFlights() {
+    /*public Map<String, Boolean> createListOfFlights() {
         //flights
         Flight polandToGermany = new Flight("Warsaw", "Berlin");
         Flight russiaToNorway = new Flight("Moscow", "Oslo");
@@ -20,7 +21,7 @@ public class FlightFinderTestSuite {
         airportAvailabilityList.put(russiaToNorway.getArrivalAirport(), false);
 
         return airportAvailabilityList;
-    }
+    }*/
 
     public void before() {
         testCounter++;
@@ -43,22 +44,17 @@ public class FlightFinderTestSuite {
     }
 
     @Test
-    public void shouldReturnAvailableAirportForArrival() {
+    public void shouldCheckIfAirportIsAvailableForArrival () throws RouteNotFoundException {
         //Given
-        Map<String,Boolean> preparedData = createListOfFlights();
         FlightFinder flightFinder = new FlightFinder();
+        Flight polandToGermany = new Flight("Warsaw", "Berlin");
 
         //When
-        //long actual = listOfFlights.entrySet().stream()
-        //        .filter(x -> x.getValue() == true)
-        //        .map(map -> map.getKey())
-        //        .count();
-        //        System.out.println("Testing " + actual);
-        Boolean actual = true;
-        System.out.println("Testing " + actual);
+        //Boolean actual = flightFinder.findFlight(polandToGermany);
+        //System.out.println("Testing " + actual);
 
         //Then
-        Boolean expected = true;
-        Assert.assertEquals(expected, actual);
+        //Boolean expected = true;
+        //Assert.assertEquals(expected, actual);
     }
 }
