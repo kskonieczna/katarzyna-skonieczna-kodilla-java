@@ -1,10 +1,10 @@
 package com.kodilla.good.patterns.challenges;
 
-public class GoodPatternsMain_2 {
+public class GoodPatternsMain_13_1 {
 
     public static void main(String[] args) {
 
-        MovieStore movieStore = new MovieStore();
+        MovieStore_13_1 movieStore = new MovieStore_13_1();
 
         movieStore.printMovieTitles();
     }

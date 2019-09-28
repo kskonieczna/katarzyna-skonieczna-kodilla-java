@@ -1,4 +1,4 @@
 package com.kodilla.good.patterns.challenges;
 
-public class RentalProcessor {
+public class CarRentalRepository_13_2 {
 }

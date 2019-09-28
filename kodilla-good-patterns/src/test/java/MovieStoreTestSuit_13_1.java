@@ -1,25 +1,30 @@
-package com.kodilla.good.patterns.challenges;
+import org.junit.*;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 import java.util.stream.Collectors;
 
-public final class MovieStore {
-    private final Map<String, List<String>> booksTitlesWithTranslations = new HashMap<>();
+public class MovieStoreTestSuit_13_1 {
+    //nie testujemy printoutów, kod próbny
 
-    public Map<String, List<String>> getMovies() {
+    private static int testCounter = 0;
 
+    public Map<String, List<String>> createMovieStore() {
+
+        //titles
         List<String> ironManTranslations = new ArrayList<>();
         ironManTranslations.add("Żelazny Człowiek");
         ironManTranslations.add("Iron Man");
-
         List<String> avengersTranslations = new ArrayList<>();
         avengersTranslations.add("Mściciele");
         avengersTranslations.add("Avengers");
-
         List<String> flashTranslations = new ArrayList<>();
         flashTranslations.add("Błyskawica");
         flashTranslations.add("Flash");
 
+        //translation lists
         Map<String, List<String>> booksTitlesWithTranslations = new HashMap<>();
         booksTitlesWithTranslations.put("IM", ironManTranslations);
         booksTitlesWithTranslations.put("AV", avengersTranslations);
@@ -28,10 +33,19 @@ public final class MovieStore {
         return booksTitlesWithTranslations;
     }
 
-    public void printMovieTitles() {
-        String printedTitles = getMovies().values().stream()
+
+    @Test
+    public void shouldReturnListOfMovies() {
+        //Given
+        Map<String, List<String>> preparedData = createMovieStore();
+
+        //When
+        String actual = preparedData.values().stream()
                 .flatMap(entry -> entry.stream())
                 .collect(Collectors.joining("! "));
-        System.out.println(printedTitles +"!");
+        System.out.println(actual +"!");
+
+        //Then
+
     }
 }
