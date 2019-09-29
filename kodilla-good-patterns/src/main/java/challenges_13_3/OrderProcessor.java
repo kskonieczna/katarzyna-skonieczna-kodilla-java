@@ -2,5 +2,5 @@ package challenges_13_3;
 
 public interface OrderProcessor {
 
-    public void process();
+    public OrderDto process(OrderRequest orderRequest);
 }

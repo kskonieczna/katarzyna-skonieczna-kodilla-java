@@ -14,6 +14,5 @@ public class Application_Allegro_13_2 {
                 new ProductPurchaseService_13_2(),
                 new ProductPurchaseRepository_13_2());
         purchaseProcessor.process(purchaseRequest);
-
     }
 }
